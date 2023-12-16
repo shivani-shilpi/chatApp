@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChatApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <style>
+      <%= ".msg-#{current_user&.id}" %> {
+        background-color: #c63662 !important;
+        padding: 10px;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+        display: flex;
+        justify-content: flex-end
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #C5C5C5">
+    <div class="container p-4" >
+      <%= render "shared/navbar" %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

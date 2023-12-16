@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-3 bgcol">
+        <h4 class="text-light">Users </h4>
+        <div class="mb-3">
+            <%= turbo_stream_from "users" %>
+            <div id="users">
+                <ul class="list-group list-group-flush">
+                <%= render @users %>
+                </ul>
+            </div>
+        </div>
+        <div class="user-room" style="width: 16rem;">
+            <%= render partial: "rooms/new_room_form" %>
+            <h4 class="text-light mt-3">Rooms </h4>
+            <div>
+               <%= turbo_stream_from "rooms" %>
+               <div id="rooms">
+                   <ul class="list-group list-group-flush">
+                       <%= render @rooms %>
+                   </ul>
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 bg-color text-light">
+        <% if @single_room %>
+        <h4 class="text-center text-light"> <%= @user&.username || @single_room.name %> </h4>
+        <hr/>
+            <%= turbo_stream_from @single_room %>
+            <div id="messages">
+                <%= render @messages %>
+            </div>
+            <%= render partial: "messages/new_message_form" %>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<%= form_for (:session) do |f| %>
+  <div class="form-group">
+    <%= f.label :username, 'Enter your username' %>
+    <%= f.text_field :username, autocomplete: 'off', class: "form-control" %>
+  </div>
+  
+  <div>
+    <%= f.submit 'Sign in' %>
+  </div>
+<% end %>
